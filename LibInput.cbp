@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="LibInput" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="lib/libinput-d" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="loop-d" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="lib/libinput" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="loop" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-std=c++0x" />
+			<Add option="-Wall" />
+			<Add option="-fPIC" />
+			<Add directory="/usr/include/ois" />
+			<Add directory="include" />
+			<Add directory="../LibLoop/include" />
+		</Compiler>
+		<Linker>
+			<Add library="OIS" />
+			<Add directory="../LibLoop/lib" />
+		</Linker>
+		<Unit filename="include/InputManager.hpp" />
+		<Unit filename="include/Mouse.hpp" />
+		<Unit filename="include/MouseListener.hpp" />
+		<Unit filename="include/input.hpp" />
+		<Unit filename="src/InputManager.cpp" />
+		<Unit filename="src/Mouse.cpp" />
+		<Unit filename="src/MouseListener.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
