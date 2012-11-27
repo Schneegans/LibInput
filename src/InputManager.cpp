@@ -7,7 +7,7 @@ namespace input {
 
 InputManager::InputManager(int xwindow):
     ois_backend_(xwindow),
-    event_loop_(0.01),
+    event_loop_(1.0/60.0),
     mouse_(NULL) {
 
     event_loop_.on_tick.connect(std::bind(&InputManager::poll_events, this));

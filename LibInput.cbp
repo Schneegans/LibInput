@@ -36,7 +36,7 @@
 			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
 			<Add option="-fPIC" />
-			<Add directory="/usr/include/ois" />
+			<Add directory="/usr/include/OIS" />
 			<Add directory="include" />
 			<Add directory="../LibLoop/include" />
 		</Compiler>

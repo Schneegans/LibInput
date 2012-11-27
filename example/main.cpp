@@ -15,6 +15,17 @@ int main() {
         std::cout << "Move to: " << x << ", " << y << " (" << dx << ", " << dy << ")" << std::endl;
     });
 
+//    mouse->x().on_change().connect([&](int x){
+//        std::cout << "X: " << x << "Y: " << mouse->y() << std::endl;
+//    });
+
+    mouse->buttons()[1].on_change().connect([](bool down){
+        if (down) std::cout << "Down!" << std::endl;
+        else      std::cout << "Up!" << std::endl;
+    });
+
+
+
     mouse->on_button_press().connect([](int button){
         std::cout << "Button: " << button << std::endl;
     });
