@@ -44,13 +44,16 @@
 			<Add library="OIS" />
 			<Add directory="../LibLoop/lib" />
 		</Linker>
+		<Unit filename="include/Device.hpp" />
 		<Unit filename="include/InputManager.hpp" />
 		<Unit filename="include/Mouse.hpp" />
 		<Unit filename="include/MouseListener.hpp" />
+		<Unit filename="include/OISBackend.hpp" />
 		<Unit filename="include/input.hpp" />
 		<Unit filename="src/InputManager.cpp" />
 		<Unit filename="src/Mouse.cpp" />
 		<Unit filename="src/MouseListener.cpp" />
+		<Unit filename="src/OISBackend.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

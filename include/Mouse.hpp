@@ -1,22 +1,27 @@
-#ifndef MOUSE_HPP
-#define MOUSE_HPP
+#ifndef LIBINPUT_MOUSE_HPP
+#define LIBINPUT_MOUSE_HPP
 
 #include <OIS.h>
 #include <loop.hpp>
 #include <vector>
 
-class MouseListener;
+#include "Device.hpp"
+#include "OISBackend.hpp"
 
 namespace OIS {
     class Mouse;
 }
 
-class Mouse {
+namespace input {
+
+class MouseListener;
+
+class Mouse: public Device {
     public:
-        Mouse(OIS::Mouse* mouse);
+        Mouse(OISBackend& backend);
         ~Mouse();
 
-        loop::Signal<int, int> const& on_mouse_move();
+        loop::Signal<int, int, int, int> const& on_move();
         loop::Signal<int> const& on_button_press();
         loop::Signal<int> const& on_button_release();
 
@@ -34,7 +39,7 @@ class Mouse {
         OIS::Mouse* mouse_;
         MouseListener* listener_;
 
-        loop::Signal<int, int> on_mouse_move_;
+        loop::Signal<int, int, int, int> on_move_;
         loop::Signal<int> on_button_press_;
         loop::Signal<int> on_button_release_;
 
@@ -44,5 +49,7 @@ class Mouse {
         std::vector<loop::Bool> buttons_;
 };
 
-#endif //MOUSE_HPP
+}
+
+#endif //LIBINPUT_MOUSE_HPP
 

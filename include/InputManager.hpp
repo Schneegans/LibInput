@@ -1,30 +1,31 @@
-#ifndef INPUT_MANAGER_HPP
-#define INPUT_MANAGER_HPP
+#ifndef LIBINPUT_INPUT_MANAGER_HPP
+#define LIBINPUT_INPUT_MANAGER_HPP
 
-#include <OIS.h>
 #include <loop.hpp>
 #include <memory>
 
 #include "Mouse.hpp"
 
-namespace OIS {
-    class InputManager;
-}
+namespace input {
 
 class InputManager {
     public:
-        InputManager(int for_xwindow);
+        InputManager(int xwindow);
         ~InputManager();
 
         std::shared_ptr<Mouse> get_mouse() const;
+        //std::shared_ptr<Keyboard> get_keyboard() const;
 
     private:
         void poll_events();
 
-        OIS::InputManager *input_manager_;
+        OISBackend ois_backend_;
+
         loop::Timer event_loop_;
 
         std::shared_ptr<Mouse> mouse_;
 };
 
-#endif //INPUT_MANAGER_HPP
+}
+
+#endif //LIBINPUT_INPUT_MANAGER_HPP

@@ -1,7 +1,9 @@
-#ifndef MOUSE_LISTENER_HPP
-#define MOUSE_LISTENER_HPP
+#ifndef LIBINPUT_MOUSE_LISTENER_HPP
+#define LIBINPUT_MOUSE_LISTENER_HPP
 
 #include <OIS.h>
+
+namespace input {
 
 class Mouse;
 
@@ -18,6 +20,8 @@ class MouseListener: public OIS::MouseListener {
         Mouse* mouse_;
 };
 
-#endif //MOUSE_LISTENER_HPP
+}
+
+#endif //LIBINPUT_MOUSE_LISTENER_HPP
 
 

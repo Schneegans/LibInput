@@ -4,10 +4,13 @@
 
 #include <iostream>
 
-Mouse::Mouse(OIS::Mouse* mouse):
-    mouse_(mouse),
+namespace input {
+
+Mouse::Mouse(OISBackend& backend):
+    mouse_(NULL),
     listener_(new MouseListener(this)) {
 
+    mouse_ = static_cast<OIS::Mouse*>(backend.get().createInputObject(OIS::OISMouse, true));
     mouse_->setEventCallback(listener_);
 
     for (int i=0; i<8; ++i) {
@@ -19,8 +22,8 @@ Mouse::~Mouse() {
     delete listener_;
 }
 
-loop::Signal<int, int> const& Mouse::on_mouse_move() {
-    return on_mouse_move_;
+loop::Signal<int, int, int, int> const& Mouse::on_move() {
+    return on_move_;
 }
 
 loop::Signal<int> const& Mouse::on_button_press() {
@@ -45,4 +48,6 @@ std::vector<loop::Bool> const& Mouse::buttons() {
 
 void Mouse::poll() {
     mouse_->capture();
+}
+
 }

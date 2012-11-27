@@ -8,15 +8,15 @@
 Window open_window();
 
 int main() {
-    InputManager input(open_window());
+    input::InputManager input(open_window());
 
     auto mouse = input.get_mouse();
-    mouse->x().on_change().connect([](int x){
-        std::cout << x << std::endl;
+    mouse->on_move().connect([](int x, int y, int dx, int dy){
+        std::cout << "Move to: " << x << ", " << y << " (" << dx << ", " << dy << ")" << std::endl;
     });
 
     mouse->on_button_press().connect([](int button){
-        std::cout << button << std::endl;
+        std::cout << "Button: " << button << std::endl;
     });
 
     loop::MainLoop l;

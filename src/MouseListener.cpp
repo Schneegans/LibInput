@@ -4,6 +4,8 @@
 
 #include <iostream>
 
+namespace input {
+
 MouseListener::MouseListener(Mouse* mouse):
     mouse_(mouse) {}
 
@@ -12,7 +14,7 @@ MouseListener::~MouseListener() {}
 bool MouseListener::mouseMoved(OIS::MouseEvent const& arg) {
     mouse_->x_ = arg.state.X.abs;
     mouse_->y_ = arg.state.Y.abs;
-    mouse_->on_mouse_move_.emit(arg.state.X.abs, arg.state.Y.abs);
+    mouse_->on_move_.emit(arg.state.X.abs, arg.state.Y.abs, arg.state.X.rel, arg.state.Y.rel);
 
     return true;
 }
@@ -31,3 +33,4 @@ bool MouseListener::mouseReleased(OIS::MouseEvent const& arg, OIS::MouseButtonID
     return true;
 }
 
+}
